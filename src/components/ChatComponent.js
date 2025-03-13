@@ -13,7 +13,7 @@ const customStyles = {
     },
   };
 const prompt = `
-${process.env.REACT_APP_PROMPT_KEY}
+${process.env.REACT_APP_PROMPT_KEY}${process.env.REACT_APP_PROMPT_KEY2}
 `
 Modal.setAppElement('#root');
 
@@ -102,27 +102,27 @@ const ChatComponent = () => {
 
     return (
         <div>
-            <button id="export-button" onClick={exportChat}>종료</button>
+            <button id="export-button" onClick={exportChat}>Done</button>
 
             <Modal
                 isOpen={isPromptModelOpen}
                 onRequestClose={() => setPromptModalOpen(false)}
                 style={customStyles}
-                contentLabel="프롬트"
+                contentLabel="prompt"
             >
-                <h2>역할극이 종료되었습니다. 창을 닫지 말고 기다려주세요.</h2>
-                <button onClick={() => setPromptModalOpen(false)}>닫기</button>
+                <h2>The task is now complete. Please keep the window open and wait for assistance.</h2>
+                <button onClick={() => setPromptModalOpen(false)}>close</button>
             </Modal>
 
             <Modal
                 isOpen={modalIsOpen}
                 onRequestClose={closeModal}
                 style={customStyles}
-                contentLabel="이름"
+                contentLabel="name"
             >
-                <h2>이름을 입력하세요</h2>
+                <h2>Please enter your full name.</h2>
                 <input onChange={(event) => setStudentId(event.target.value)}/>
-                <button onClick={closeModal}>시작하기</button>
+                <button onClick={closeModal}>Start</button>
                 <form>
                 </form>
             </Modal>
